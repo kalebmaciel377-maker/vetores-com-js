@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>document</title>
+    <style>
+        body{
+            text-align: center;
+            font-family: Arial;
+            background-color: rgb(141, 18, 197);
+        }
+
+        h1{
+            color: #fff;
+        }
+
+        .card{
+            border: 1px solid #ccc;
+            margin: 10px auto;
+            padding: 10px;
+            border-radius: 20px;
+            width: 250px;
+            color: #000;
+            background-color: #fff;
+        }
+
+        input{
+            width: 200px;
+            height: 35px;
+            margin: 5px;
+            padding-left: 10px;
+            border: 1px solid;
+            border-radius: 20px;
+        }
+
+        button{
+            width: 200px;
+            height: 35px;
+            border-radius: 20px;
+            border: 1px solid;
+            background-color: #fff;
+            cursor: pointer;
+        }
+
+        input:hover{
+            background-color: #eceaea;
+        }
+
+        button:hover{
+            background-color: #eceaea;
+        }
+    </style>
+</head>
+<body>
+    <h1>Loja de Jogos</h1>
+
+    <input type="text"  id="nome" placeholder="Nome do Jogo">
+    <input type="number" id="preco" placeholder="Preço">
+    <input type="text" id="categoria" placeholder="Categoria">
+    <button onclick="adicionar_jogo()">Adicionar Jogo</button>
+
+
+    <div id="cardapio"></div>
+
+    <script>
+        let produtos = [
+            {
+                nome: "GTA 6",
+                preco: 600.00,
+                categoria: "RP"
+            },
+            {
+                nome: "FORZA HORAZION",
+                preco: 250.00,
+                categoria: "RACING"
+            },
+            {
+                nome: "ASSACINE SQUID",
+                preco: 600.00,
+                categoria: "ACTION"
+            },
+            {
+                nome: "CALL OF DUTY",
+                preco: 600.00,
+                categoria: "RP"
+            }
+        ];
+
+        function listar_produtos(){
+            let cardapio = document.getElementById("cardapio");
+
+            cardapio.innerHTML = "";
+
+            for(let i = 0; i < produtos.length; i++){
+                cardapio.innerHTML += 
+                "<div class='card'>" +
+                    "<h2>" + produtos[i].nome + "</h2>" +
+                    "<p>" + produtos[i].preco + "</p>" +
+                    "<p>" + produtos[i].categoria + "</p>" +
+                "</div>"
+            }
+        }
+        
+        listar_produtos();
+
+        function adicionar_jogo(){
+            let nome = document.getElementById("nome").value;
+            let preco = document.getElementById("preco").value;
+            let categoria = document.getElementById("categoria").value;
+
+            produtos.push({
+                nome: nome,
+                preco: preco,
+                categoria: categoria
+            })
+
+            listar_produtos();
+
+        }
+    </script>
+
+</body>
+</html>
