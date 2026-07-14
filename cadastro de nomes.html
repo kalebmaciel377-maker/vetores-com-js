@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <title>Vetores em JavaScript</title>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin-top: 50px;
+        }
+
+        button {
+            padding: 10px;
+            margin: 5px;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Cadastro de Nomes</h1>
+
+    <button onclick="cadastrarNomes()">Cadastrar Nomes</button>
+    <button onclick="mostrarNomes()">Mostrar Nomes</button>
+
+    <p id="resultado"></p>
+
+    <script>
+        // Vetor para armazenar os nomes
+        let nomes = [];
+
+        function cadastrarNomes() {
+            nomes = [];
+
+            for (let i = 0; i < 3; i++) {
+                let nome = prompt("Digite o nome " + (i + 1) + ":");
+                nomes.push(nome);
+            }
+
+            alert("Nomes cadastrados com sucesso!");
+        }
+
+        function mostrarNomes() {
+            let texto = "";
+
+            for (let i = 0; i < nomes.length; i++) {
+                texto += nomes[i] + "<br>";
+            }
+
+            document.getElementById("resultado").innerHTML = texto;
+        }
+    </script>
+
+</body>
+</html>
