@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cardápio Digital</title>
+    <style>
+        body{
+            text-align: center;
+            font-family: Arial;
+        }
+
+        h1{
+            color: chocolate;
+        }
+
+        .card{
+            border: 1px solid #ccc;
+            margin: 10px auto;
+            padding: 10px;
+            border-radius: 20px;
+            width: 250px;
+        }
+
+        input{
+            width: 200px;
+            height: 35px;
+            margin: 5px;
+            padding-left: 10px;
+            border: 1px solid;
+            border-radius: 20px;
+        }
+
+        button{
+            width: 200px;
+            height: 35px;
+            border-radius: 20px;
+            border: 1px solid;
+            background-color: transparent;
+            cursor: pointer;
+        }
+
+        input:hover{
+            background-color: #eceaea;
+        }
+
+        button:hover{
+            background-color: pink;
+            transition: 0.5s;
+        }
+    </style>
+</head>
+<body>
+    <h1>🍔Cardápio Digital🍕</h1>
+
+    <input type="text"  id="nome" placeholder="Nome do Lanche">
+    <input type="number" id="preco" placeholder="Preço">
+    <input type="text" id="categoria" placeholder="Categogia">
+    <button onclick="adicionar_item()">Adicionar Item</button>
+
+
+    <div id="cardapio"></div>
+
+    <script>
+        let produtos = [
+            {
+                nome: "X-Burger",
+                preco: 19.50,
+                categoria: "Lanche"
+            },
+            {
+                nome: "Pizza de calabresa",
+                preco: 120.00,
+                categoria: "Lanche"
+            }
+        ];
+
+        function listar_produtos(){
+            let cardapio = document.getElementById("cardapio");
+
+            cardapio.innerHTML = "";
+
+            for(let i = 0; i < produtos.length; i++){
+                cardapio.innerHTML += 
+                "<div class='card'>" +
+                    "<h2>" + produtos[i].nome + "</h2>" +
+                    "<p>" + produtos[i].preco + "</p>" +
+                    "<p>" + produtos[i].categoria + "</p>" +
+                "</div>"
+            }
+        }
+        
+        listar_produtos();
+
+        function adicionar_item(){
+            let nome = document.getElementById("nome").value;
+            let preco = document.getElementById("preco").value;
+            let categoria = document.getElementById("categoria").value;
+
+            produtos.push({
+                nome: nome,
+                preco: preco,
+                categoria: categoria
+            })
+
+            listar_produtos();
+
+        }
+    </script>
+
+</body>
+</html>
