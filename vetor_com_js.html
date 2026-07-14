@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vetor</title>
+    <style>
+        button{
+            color:#fff;
+            background-color: purple;
+            border-color: #333;
+        }
+    </style>
+</head>
+<body>
+    <h1>CADASTRAR NOMES</h1>
+    <p id="resultado"></p>
+    <button onclick="cadastrar_nomes()">Cadastrar Nomes</button>
+    <button onclick="mostrarnomes()">Mostrar Nomes</button>
+
+    <script>
+        let nomes = []
+
+        function cadastrar_nomes(){
+            nomes = [] // limpar o vetor
+
+            for(let i = 0; i < 3; i++){
+                let nome = prompt('digite o nome ' + (i+1) + ":")
+                nomes.push(nome); // inclui o nome no vetor
+            }
+
+            alert('nomes cadastrados com sucesso!!!')
+        }
+
+        function mostrarnomes(){
+            let texto = ""
+
+            for(let i = 0; i < 3; i++){
+                texto += nomes[i] + '<br>'
+            }
+
+            document.getElementById("resultado").innerHTML = texto;
+        }
+    </script>
+</body>
+</html>
