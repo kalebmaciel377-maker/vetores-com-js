@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+
+        body{
+            text-align: center;
+        }
+
+        button{
+            background-color: royalblue;
+            color: #fff;
+            border-radius: 8px;
+            cursor: pointer;
+            border: none;
+            height: 35px;
+            width: 250;
+        }
+
+        button:hover{
+            background-color: blue;
+        }
+
+        #utimoItem{
+            color: chocolate;
+        }
+    </style>
+</head>
+<body>
+    <h1>🎁sorteio de caixa🎁</h1>
+    <button onclick="abrir_caixa()">Abrir caixa</button>
+    <button onclick="mostrarinventario()">Mostrar itens</button>
+    
+    <h2 id="utimoItem"></h2>
+    <ul id="colecao"></ul>
+
+    <script>
+        let itensPossiveis = [
+            "🪵 Madeira",
+            "🔩 Metal",
+            "🪟 Vidro",
+            "🧴 Plástico",
+            "🧱 Concreto",
+            "🏺 Cerâmica",
+            "⚙️ Alumínio",
+            "🪨 Pedra"
+        ]
+        // vetor que armazena os itens do jogador
+        let inventario = []
+
+        function abrir_caixa(){
+            // sorteia um numero
+            let sorteado = Math.floor(Math.random() * itensPossiveis.length);
+            
+            // pegar o item da posição sorteada
+            let item = itensPossiveis[sorteado];
+
+            // adiciona o item no inventario
+            inventario.push(item);
+
+            //mostrar o item na tela
+
+            document.getElementById("utimoItem").innerHTML = "Voce recebeu: " + item;
+
+        }
+
+        function mostrarinventario(){
+            let lista = document.getElementById("colecao");
+
+            // limpa lista
+            lista.innerHTML = "";
+
+            // percorre o vetor inventario e mostra na tela
+            for(let i = 0; i < inventario.length; i++){
+                lista.innerHTML +=
+                    "<li>" +
+                        (i + 1) + " item: " + inventario[i] +
+                    "</li>";
+            }
+        }
+    </script>
+</body>
+</html>
